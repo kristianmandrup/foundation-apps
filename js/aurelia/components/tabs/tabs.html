@@ -1,8 +1,8 @@
-<div>
-  <div class="tabs" ng-transclude>
+<template>
+  <div class="tabs">
   </div>
-  <div zf-tab-content
-    target="{{ id }}"
-    ng-if="showTabContent">
-  </div>
-</div>
+  <zf-tab-content
+    target.bind="${id}"
+    if="showTabContent">
+  </zf-tab-content>
+<template>
