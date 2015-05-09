@@ -1,8 +1,8 @@
-# Foundation for Apps
+# Foundation for Aurelia Apps 
 
 [![Build Status](https://travis-ci.org/zurb/foundation-apps.svg)](https://travis-ci.org/zurb/foundation-apps)
 
-This is [Foundation for Apps](http://foundation.zurb.com/apps), an Angular-powered framework for building powerful responsive web apps, from your friends at [ZURB](http://zurb.com).
+This is [Foundation for Apps](http://foundation.zurb.com/apps), an Aurelia-powered framework for building powerful responsive web apps, from your friends at [ZURB](http://zurb.com).
 
 ## Requirements
 

@@ -1,3 +1,11 @@
+# Version 0.1 
+@kristianmandrup
+
+- Very early draft rewrite for Aurelia
+TODO: 
+- Aurelia Components
+- Tests
+
 # Version 1.1 — Weisshorn
 
 *March 17, 2015*

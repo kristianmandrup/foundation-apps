@@ -60,7 +60,7 @@ var paths = {
       './docs/templates/**/*.html'
     ],
     partials: [
-      'js/angular/components/**/*.html'
+      'js/aurelia/components/**/*.html'
     ]
   },
   sass: {
@@ -77,21 +77,19 @@ var paths = {
   javascript: {
     foundation: [
       'js/vendor/**/*.js',
-      'js/angular/**/*.js',
-      '!js/angular/app.js'
+      'js/aurelia/**/*.js',
+      '!js/aurelia/app.js'
     ],
     libs: [
       'bower_components/fastclick/lib/fastclick.js',
       'bower_components/viewport-units-buggyfill/viewport-units-buggyfill.js',
       'bower_components/tether/tether.js',
-      'bower_components/angular/angular.js',
-      'bower_components/angular-animate/angular-animate.js',
-      'bower_components/angular-ui-router/release/angular-ui-router.js',
+      'bower_components/webcomponentsjs/webcomponents.js',
       'bower_components/hammerjs/hammer.js'
     ],
     docs: [
       'bower_components/marked/lib/marked.js',
-      'bower_components/angular-highlightjs/angular-highlightjs.js',
+      'bower_components/aurelia-highlightjs/aurelia-highlightjs.js',
       'bower_components/highlightjs/highlight.pack.js',
       'bower_components/allmighty-autocomplete/script/autocomplete.js',
       'docs/assets/js/app.js'
@@ -253,7 +251,6 @@ gulp.task('test:karma', ['build', 'sass'], function() {
     'build/assets/js/foundation.js',
     'build/assets/js/dependencies.js',
     'build/assets/js/app.js',
-    'bower_components/angular-mocks/angular-mocks.js',
     'bower_components/jsdiff/diff.js',
     'build/assets/css/app.css',
     'build/assets/css/app_node.css',
