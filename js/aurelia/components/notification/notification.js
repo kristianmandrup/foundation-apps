@@ -1,106 +1,55 @@
-(function() {
-  'use strict';
+import NotificationFactory from './notification-factory';
+import {autoinject} from 'aurelia-framework';
+import {Api} from '../../foundation';
 
-  angular.module('foundation.notification', ['foundation.core'])
-    .controller('ZfNotificationController', ZfNotificationController)
-    .directive('zfNotificationSet', zfNotificationSet)
-    .directive('zfNotification', zfNotification)
-    .directive('zfNotificationStatic', zfNotificationStatic)
-    .directive('zfNotify', zfNotify)
-    .factory('NotificationFactory', NotificationFactory)
-    .service('FoundationNotification', FoundationNotification)
-  ;
-
-  FoundationNotification.$inject = ['FoundationApi', 'NotificationFactory'];
-
-  function FoundationNotification(foundationApi, NotificationFactory) {
-    var service    = {};
-
-    service.activate = activate;
-    service.deactivate = deactivate;
-
-    return service;
-
-    //target should be element ID
-    function activate(target) {
-      foundationApi.publish(target, 'show');
-    }
-
-    //target should be element ID
-    function deactivate(target) {
-      foundationApi.publish(target, 'hide');
-    }
-
-    function toggle(target) {
-      foundationApi.publish(target, 'toggle');
-    }
-
-    function createNotificationSet(config) {
-      return new NotificationFactory(config);
-    }
+@autoinject()
+export class Notification {
+  constructor(api: Api, factory: NotificationFactory) {
+    this.notifications = this.notifications || [];
   }
 
+  //target should be element ID
+  activate(target) {
+    this.api.publish(target, 'show');
+  }
 
-  ZfNotificationController.$inject = ['$scope', 'FoundationApi'];
+  //target should be element ID
+  deactivate(target) {
+    this.api.publish(target, 'hide');
+  }
 
-  function ZfNotificationController($scope, foundationApi) {
-    var controller    = this;
-    controller.notifications = $scope.notifications = $scope.notifications || [];
+  toggle(target) {
+    this.api.publish(target, 'toggle');
+  }
 
-    controller.addNotification = function(info) {
-      var id  = foundationApi.generateUuid();
-      info.id = id;
-      $scope.notifications.push(info);
-    };
+  createNotificationSet(config) {
+    return new NotificationFactory(config);
+  }
 
-    controller.removeNotification = function(id) {
-      $scope.notifications.forEach(function(notification) {
-        if(notification.id === id) {
-          var ind = $scope.notifications.indexOf(notification);
-          $scope.notifications.splice(ind, 1);
-        }
-      });
-    };
+  addNotification(info) {
+    var id  = foundationApi.generateUuid();
+    info.id = id;
+    this.notifications.push(info);
+  };
 
-    controller.clearAll = function() {
-      while($scope.notifications.length > 0) {
-        $scope.notifications.pop();
+  removeNotification(id) {
+    this.notifications.forEach(function(notification) {
+      if(notification.id === id) {
+        var ind = this.notifications.indexOf(notification);
+        this.notifications.splice(ind, 1);
       }
-    };
+    });
   }
 
-  zfNotificationSet.$inject = ['FoundationApi'];
-
-  function zfNotificationSet(foundationApi) {
-    var directive = {
-      restrict: 'EA',
-      templateUrl: 'components/notification/notification-set.html',
-      controller: 'ZfNotificationController',
-      replace: true,
-      scope: {
-        position: '@'
-      },
-      link: link
-    };
-
-    return directive;
-
-    function link(scope, element, attrs, controller) {
-      scope.position = scope.position ? scope.position.split(' ').join('-') : 'top-right';
-
-      foundationApi.subscribe(attrs.id, function(msg) {
-        if(msg === 'clearall') {
-          controller.clearAll();
-        }
-        else {
-          controller.addNotification(msg);
-          if (!scope.$root.$$phase) {
-            scope.$apply();
-          }
-        }
-      });
+  clearAll() {
+    while(this.notifications.length > 0) {
+      this.notifications.pop();
     }
   }
+}
+
+
+
 
   zfNotification.$inject = ['FoundationApi'];
 

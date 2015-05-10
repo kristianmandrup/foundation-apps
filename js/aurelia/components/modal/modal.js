@@ -1,38 +1,25 @@
-(function() {
-  'use strict';
+import ModalFactory from './modal-factory';
 
-  angular.module('foundation.modal', ['foundation.core'])
-    .directive('zfModal', modalDirective)
-    .factory('ModalFactory', ModalFactory)
-    .service('FoundationModal', FoundationModal)
-  ;
 
-  FoundationModal.$inject = ['FoundationApi', 'ModalFactory'];
-
-  function FoundationModal(foundationApi, ModalFactory) {
-    var service    = {};
-
-    service.activate = activate;
-    service.deactivate = deactivate;
-    service.newModal = newModal;
-
-    return service;
-
-    //target should be element ID
-    function activate(target) {
-      foundationApi.publish(target, 'show');
-    }
-
-    //target should be element ID
-    function deactivate(target) {
-      foundationApi.publish(target, 'hide');
-    }
-
-    //new modal has to be controlled via the new instance
-    function newModal(config) {
-      return new ModalFactory(config);
-    }
+class Modal {
+  constructor(app: Api, factory: ModalFactory) {
   }
+
+  //target should be element ID
+  activate(target) {
+    this.api.publish(target, 'show');
+  }
+
+  //target should be element ID
+  deactivate(target) {
+    this.api.publish(target, 'hide');
+  }
+
+  //new modal has to be controlled via the new instance
+  newModal(config) {
+    return new ModalFactory(config);
+  }
+}
 
   modalDirective.$inject = ['FoundationApi'];
 

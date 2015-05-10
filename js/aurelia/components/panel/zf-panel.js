@@ -1,5 +1,5 @@
 import {autoinject} from 'aurelia-framework';
-import {Api} from '../../foundation';
+import {Api} from '././foundation';
 
 @autoinject()
 
@@ -16,16 +16,16 @@ export class ZfPanel {
     var globalQueries = api.getSettings().mediaQueries;
 
     //urgh, there must be a better way
-    if(scope.position === 'left') {
+    if(this.position === 'left') {
       animationIn  = attrs.animationIn || 'slideInRight';
       animationOut = attrs.animationOut || 'slideOutLeft';
-    } else if (scope.position === 'right') {
+    } else if (this.position === 'right') {
       animationIn  = attrs.animationIn || 'slideInLeft';
       animationOut = attrs.animationOut || 'slideOutRight';
-    } else if (scope.position === 'top') {
+    } else if (this.position === 'top') {
       animationIn  = attrs.animationIn || 'slideInDown';
       animationOut = attrs.animationOut || 'slideOutUp';
-    } else if (scope.position === 'bottom') {
+    } else if (this.position === 'bottom') {
       animationIn  = attrs.animationIn || 'slideInUp';
       animationOut = attrs.animationOut || 'slideOutDown';
     }
@@ -42,15 +42,15 @@ export class ZfPanel {
       }
 
       if(msg == 'show' || msg == 'open') {
-        scope.show();
+        this.show();
       } else if (msg == 'close' || msg == 'hide') {
-        scope.hide();
+        this.hide();
       } else if (msg == 'toggle') {
-        scope.toggle();
+        this.toggle();
       }
       
-      if (!scope.$root.$$phase) {
-        scope.$apply();
+      if (!this.$root.$$phase) {
+        this.$apply();
       }
 
       return;
@@ -62,28 +62,28 @@ export class ZfPanel {
 
       if (!matchMedia(globalQueries.medium).matches && srcEl.href && srcEl.href.length > 0) {
         // Hide element if it can't match at least medium
-        scope.hide();
-        foundationApi.animate(element, scope.active, animationIn, animationOut);
+        this.hide();
+        this.api.animate(element, this.active, animationIn, animationOut);
       }
     });      
   }
     
   hide() {
-    if(scope.active){
-      scope.active = false;
-      foundationApi.animate(element, scope.active, animationIn, animationOut);
+    if(this.active){
+      this.active = false;
+      this.api.animate(element, this.active, animationIn, animationOut);
     }
   }
 
   show() {
-    if(!scope.active){
-      scope.active = true;
-      foundationApi.animate(element, scope.active, animationIn, animationOut);
+    if(!this.active){
+      this.active = true;
+      this.api.animate(element, this.active, animationIn, animationOut);
     }
   }
 
   toggle() {
-    scope.active = !scope.active;
-    foundationApi.animate(element, scope.active, animationIn, animationOut);
+    this.active = !this.active;
+    this.api.animate(element, this.active, animationIn, animationOut);
   }
 }
