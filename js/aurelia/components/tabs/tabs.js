@@ -1,11 +1,12 @@
+import {autoinject} from 'aurelia-framework';
 import {Api} from '../../foundation';
 
-@inject Api;
-class Tabs {
+@autoinject()
+export class Tabs {
   id         = ''
   tabs       = []
 
-  constructor(Api: api) {
+  constructor(api: Api) {
     this.api = api;
   }
   

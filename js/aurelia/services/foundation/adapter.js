@@ -1,18 +1,15 @@
-class FoundationAdapter {
-  constructor(FoundationApi: foundationApi) {
-    var service    = {};
+import {autoinject} from 'aurelia-framework';
 
-    service.activate = activate;
-    service.deactivate = deactivate;
+@autoinject()
+export class FoundationAdapter {
+  constructor(api: Api) {
+  }
 
-    return service;
+  activate(target) {
+    this.api.publish(target, 'show');
+  }
 
-    function activate(target) {
-      foundationApi.publish(target, 'show');
-    }
-
-    function deactivate(target) {
-      foundationApi.publish(target, 'hide');
-    }
+  deactivate(target) {
+    this.api.publish(target, 'hide');
   }
 }

@@ -1,4 +1,4 @@
-class Setup {
+export class Setup {
   constructor() {
     // Attach FastClick
     if (FastClick) {

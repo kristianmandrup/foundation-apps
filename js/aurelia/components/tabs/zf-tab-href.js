@@ -1,6 +1,9 @@
-@inject = FoundationApi;
-class ZfTabHref {
-  constructor(Api: api) {
+import {autoinject} from 'aurelia-framework';
+import {Api} from '../../foundation';
+
+@autoinject()
+export class ZfTabHref {
+  constructor(api: Api) {
     var target = attrs.zfTabHref;
 
     api.subscribe(target, function(msg) {

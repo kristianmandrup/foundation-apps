@@ -1,5 +1,9 @@
-class zfTabContent {
-  constructor(Api: api) {
+import {autoinject} from 'aurelia-framework';
+import {Api} from '../../foundation';
+
+@autoinject()
+export class zfTabContent {
+  constructor(api: Api) {
     this.tabs = this.tabs || [];
     var id = this.target;
     var self = this;

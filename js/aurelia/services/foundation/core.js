@@ -2,10 +2,10 @@ import Api from     './api';
 import Adapter from './adapter';
 import Utils from   './utils';
 import Setup from   './setup';
+import {autoinject} from 'aurelia-framework';
 
-@inject FoundationAnimation
-class Core {
-  constructor(Api: api, Adapter: adapter, Utils: utils, Setup: setup) {
-    setup.init();
+export class Core {
+  constructor(api: Api, adapter: Adapter, utils: Utils, setup: Setup) {
+    this.setup.init();
   }
 }

@@ -1,6 +1,9 @@
-@inject = Api;
-class zfTabContentCustom {
-  constructor(Api: api) {
+import {autoinject} from 'aurelia-framework';
+import {Api} from '../../foundation';
+
+@autoinject()
+export class zfTabContentCustom {
+  constructor(api: Api) {
     var tabs = [];
     var children = element.children();
 

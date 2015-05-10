@@ -1,9 +1,8 @@
-class Utils {
+export class Utils {
   constructor() {
-    this.throttle = throttleUtil;
   }
 
-  throttleUtil(func, delay) {
+  throttle(func, delay) {
     var timer = null;
 
     return function () {

@@ -1,5 +1,8 @@
-class RoutingAnimations {
-  constructor(State: state) {
+import {autoinject} from 'aurelia-framework';
+
+@autoinject()
+export class RoutingAnimations {
+  constructor(state: State) {
     var animation = {};
     var animationEnded = false;
     var presetHeight;

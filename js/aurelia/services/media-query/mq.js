@@ -1,15 +1,9 @@
+import {autoinject} from 'aurelia-framework';
 import Api from 'api'
 
-@inject Api;
-class MQ {
-  constructor(Api: api) {
-    var service = [];
-
-    service.getMediaQueries = getMediaQueries;
-    service.match = match;
-    service.collectScenariosFromElement = collectScenariosFromElement;
-
-    return service;
+@autoinject()
+export class MQ {
+  constructor(api: Api) {
   }
 
   getMediaQueries() {

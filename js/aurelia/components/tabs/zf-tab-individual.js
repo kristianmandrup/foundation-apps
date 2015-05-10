@@ -1,9 +1,10 @@
+import {autoinject} from 'aurelia-framework';
 import Api from '../../foundation/api';
 import Tab from './tab';
 
-@inject Api;
-class ZfTabIndividual {
-  constructor(Api: api, Tab: tab) {
+@autoinject()
+export class ZfTabIndividual {
+  constructor(api: Api, tab: Tab) {
     var id = tab.id;
 
     tab.scope.transcludeFn(tab, function(tabContent) {

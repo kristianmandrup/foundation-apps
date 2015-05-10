@@ -1,5 +1,9 @@
-class ZfTabs {
-  constructor(Api: api) {
+import {autoinject} from 'aurelia-framework';
+import Api from '../../foundation/api';
+
+@autoinject()
+export class ZfTabs {
+  constructor(api: Api) {
     this.id = attrs.id || api.generateUuid();
     this.showTabContent = this.displaced !== 'true';
 

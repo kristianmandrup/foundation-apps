@@ -1,23 +1,12 @@
-@inject FoundationAnimation;
-class FoundationApi(FoundationAnimation) {
+import {autoinject} from 'aurelia-framework';
+
+@autoinject()
+export class Api {
   constructor() {
-    var listeners  = {};
-    var settings   = {};
-    var uniqueIds  = [];
-    var service    = {};
-
-    service.subscribe           = subscribe;
-    service.unsubscribe         = unsubscribe;
-    service.publish             = publish;
-    service.getSettings         = getSettings;
-    service.modifySettings      = modifySettings;
-    service.generateUuid        = generateUuid;
-    service.toggleAnimate       = toggleAnimate;
-    service.closeActiveElements = closeActiveElements;
-    service.animate             = animate;    
-    return service;    
+    this.listeners  = {};
+    this.settings   = {};
+    this.uniqueIds  = [];
   }
-
 
   subscribe(name, callback) {
     if (!listeners[name]) {

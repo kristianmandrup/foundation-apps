@@ -1,6 +1,10 @@
-@inject Api;
-class ZfTab {
-  constructor(Api: api, Tabs: tabs) {    
+import {autoinject} from 'aurelia-framework';
+import {Api} from '../../foundation';
+import {Tabs} from './tabs';
+
+@autoinject()
+export class ZfTab {
+  constructor(api: Api, tabs: Tabs) {    
     this.id = attrs.id || foundationApi.generateUuid();
     this.active = false;
     this.transcludeFn = transclude;

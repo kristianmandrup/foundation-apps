@@ -1,12 +1,8 @@
-class MqHelpers {
+export class MqHelpers {
   constructor() {
-    var factory = {};
-
-    factory.headerHelper = headerHelper;
-    factory.getStyle = getStyle;
-    factory.parseStyleToObject = parseStyleToObject;
-
-    return factory;
+    this.headerHelper = headerHelper;
+    this.getStyle = getStyle;
+    this.parseStyleToObject = parseStyleToObject;
   }
 
   headerHelper(classArray) {

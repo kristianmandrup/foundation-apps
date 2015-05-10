@@ -2,10 +2,10 @@ import MqHelpers from './mq-helpers';
 import Api from './api';
 import Utils from './utils';
 
-@inject ['MqHelpers', 'Api', 'Utils'];
-class MqInit {
-  constructor(MQHelpers: helpers, Api: api, Utils: utils){
-    var namedQueries = {
+@autoinject()
+export class MqInit {
+  constructor(helpers: MQHelpers, api: Api, utils: Utils){
+    this.namedQueries = {
       'default' : 'only screen',
       landscape : 'only screen and (orientation: landscape)',
       portrait : 'only screen and (orientation: portrait)',
@@ -16,8 +16,6 @@ class MqInit {
         'only screen and (min-resolution: 192dpi),' +
         'only screen and (min-resolution: 2dppx)'
     };
-    this.helpers = helpers;
-    this.api = api;
   }
 
   init() {

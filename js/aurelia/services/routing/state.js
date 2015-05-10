@@ -1,7 +1,8 @@
-@inject StateProvider, Router;
-class FoundationState
-  constructor(StateProvider: stateProvider, Router: router) {
-    var complexViews = {};
-    this.registerDynamicRoutes = registerDynamicRoutes(router.routes(), complexViews);
+import {autoinject} from 'aurelia-framework';
+
+@autoinject()
+export class FoundationState {
+  constructor(stateProvider: StateProvider, router: Router) {
+    this.registerDynamicRoutes = registerDynamicRoutes(router.routes(), {});
   }
 }

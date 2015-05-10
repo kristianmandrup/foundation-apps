@@ -1,7 +1,9 @@
+import {autoinject} from 'aurelia-framework';
 import Core from './core'
 
-class MediaQuery {
-  constructor(MQInit: mqInit, MQHelpers: mqHelpers, MQ: mq) {
-    mqInit.init();
+@autoinject()
+export class MediaQuery {
+  constructor(mqInit: MQInit, mqHelpers: MQHelpers, mq: MQ) {
+    this.mqInit.init();
   }
 }

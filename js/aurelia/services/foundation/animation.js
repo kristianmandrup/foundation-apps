@@ -1,10 +1,14 @@
-class FoundationAnimation() {
+import {autoinject} from 'aurelia-framework';
+
+@autoinject()
+export class Animation() {
   constructor() {
     var animations = [];
 
-    var initClasses        = ['ng-enter', 'ng-leave'];
-    var activeClasses      = ['ng-enter-active', 'ng-leave-active'];
+    var initClasses        = ['enter', 'leave'];
+    var activeClasses      = ['enter-active', 'leave-active'];
     var activeGenericClass = 'is-active';
+
     var events = [
       'webkitAnimationEnd', 'mozAnimationEnd',
       'MSAnimationEnd', 'oanimationend',
@@ -40,9 +44,6 @@ class FoundationAnimation() {
     element.addClass(initClass);
 
     element.addClass(activeGenericClass);
-
-    //force a "tick"
-    reflow();
 
     //activate
     element[0].style.transitionDuration = '';
