@@ -53,5 +53,4 @@ class ZfNotification {
       notification.removeNotification(this.notifId);
     }, 50);
   }
-
 }

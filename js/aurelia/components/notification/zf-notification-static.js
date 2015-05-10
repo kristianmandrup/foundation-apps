@@ -4,42 +4,42 @@ import {Api} from '../../foundation';
 @autoinject()
 export class ZfNotificationStatic {
   constructor(api: Api) {
-      var type = 'notification';
-      this.zfClosable = type;
-      this.position = attrs.position ? attrs.position.split(' ').join('-') : 'top-right';
+    var type = 'notification';
+    this.zfClosable = type;
+    this.position = attrs.position ? attrs.position.split(' ').join('-') : 'top-right';
 
-      var animationIn = attrs.animationIn || 'fadeIn';
-      var animationOut = attrs.animationOut || 'fadeOut';
+    var animationIn = attrs.animationIn || 'fadeIn';
+    var animationOut = attrs.animationOut || 'fadeOut';
 
-      //setup
-      this.api.subscribe(attrs.id, function(msg) {
-        if(msg == 'show' || msg == 'open') {
-          this.show();
-          // close if autoclose
-          if (this.autoclose) {
-            setTimeout(function() {
-              if (this.active) {
-                this.hide();
-              }
-            }, parseInt(this.autoclose));
-          };
-        } else if (msg == 'close' || msg == 'hide') {
-          this.hide();
-        } else if (msg == 'toggle') {
-          this.toggle();
-          // close if autoclose
-          if (this.autoclose) {
-            setTimeout(function() {
-              if (this.active) {
-                this.toggle();
-              }
-            }, parseInt(this.autoclose));
-          };
-        }
+    //setup
+    this.api.subscribe(attrs.id, function(msg) {
+      if(msg == 'show' || msg == 'open') {
+        this.show();
+        // close if autoclose
+        if (this.autoclose) {
+          setTimeout(function() {
+            if (this.active) {
+              this.hide();
+            }
+          }, parseInt(this.autoclose));
+        };
+      } else if (msg == 'close' || msg == 'hide') {
+        this.hide();
+      } else if (msg == 'toggle') {
+        this.toggle();
+        // close if autoclose
+        if (this.autoclose) {
+          setTimeout(function() {
+            if (this.active) {
+              this.toggle();
+            }
+          }, parseInt(this.autoclose));
+        };
+      }
 
-        this.api.animate(element, this.active, animationIn, animationOut);
-      });
-    }
+      this.api.animate(element, this.active, animationIn, animationOut);
+    });
+  }
 
   hide() {
     this.active = false;
