@@ -1,7 +1,7 @@
 import {autoinject} from 'aurelia-framework';
 
 @autoinject()
-export class FoundationAdapter {
+export class Adapter {
   constructor(api: Api) {
   }
 
